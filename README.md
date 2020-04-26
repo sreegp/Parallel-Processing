@@ -1,4 +1,4 @@
 # Parallel-Processing
-I develop an algorithm to calculate the median of large unsorted data distributed across machines, without transferring the actual data any point.
+I implemented median calculation for large datasets located across machines with minimal data transfer overhead
 
 I used Python's multiprocessing package.
