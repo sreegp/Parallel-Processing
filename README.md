@@ -34,7 +34,7 @@ If any one of the processes run out of the data, it is terminated and removed fr
 
 ## Assumption specific to approach:
 
-1) Values in the data across the 4 processes are ​unique and not repeating​. The
+Values in the data across the 4 processes are ​unique and not repeating​. The
 approach will work for cases whereby the randomly chosen pivots are unique but other elements are repeating.
 
 ## Data:
