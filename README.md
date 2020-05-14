@@ -15,10 +15,11 @@ Log file of floats or ints is too big to be consumed by 1 machine. It is located
 
 For the median calculation, a pivot value is randomly selected from data in one of the 4 processes. This pivot value is shared with all 4 processes using a queue. Each process does a count of values less than or equal to the pivot and a count of values more than the pivot and returns this to the 5th process. The 5th process sums the values less than or equal to the pivot and the values more than the pivot.
 
-Based on the total length of the data (used to calculate average), the 5th process determines an initial position for the median (total_length // 2 + 1). If the sum of values less than or equal to the pivot equals the position of the median, we exit out of the loop.
+Based on the total length of the data (used to calculate average), the 5th process determines an initial position for the median (total_length // 2 + 1). If the number of values less than or equal to the pivot equals the position of the median, we exit out of the loop.
 
 The pivot is equal to the median if the length of the total data is odd, or the pivot is equal to the larger of the 2 medians if the length of the total data is even.
-If the sum of values less than or equal to the pivot is less than the position of the median, the 5th process tells the other processes to discard values lower than or equal to the median. The median is one of the values greater than the pivot. The position of the median is reduced by the total number of values discarded.
+
+If the number of values less than or equal to the pivot is less than the position of the median, the 5th process tells the other processes to discard values lower than or equal to the median. The median is one of the values greater than the pivot. The position of the median is reduced by the total number of values discarded.
 On the other hand, if the sum of values less than or equal to the pivot is greater than the position of the median, the 5th process tells the other processes to discard values greater than the median. The median is one of the values less than or equal to the pivot.
 
 A new pivot is randomly selected from data in one of the 4 processes. Each process once again does a count of values less than or equal to the pivot and a count of values more than the pivot and returns this to the 5th process, to aggregate the sums and compare with the new position of the median. This routine repeats until the sum of values less than or equal to the pivot equals the position of the median.
